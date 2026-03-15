@@ -1,0 +1,560 @@
+/* ============================================================
+   Evelyn House — Design System
+   Tailwind v4 theme (CSS-first config)
+   ============================================================ */
+
+@import "tailwindcss";
+
+@theme {
+  /* Colors — used via var(--color-*) throughout components */
+  --color-bg: #f5f0e8;
+  --color-ink: #111009;
+  --color-ink-muted: #3a3528;
+  --color-ink-faint: #6b6355;
+  --color-red: #c42b1a;
+  --color-blue: #1a4a8a;
+  --color-gold: #b07d10;
+  --color-surface: rgba(17, 16, 9, 0.06);
+  --color-border: rgba(17, 16, 9, 0.15);
+  --color-border-strong: rgba(17, 16, 9, 0.3);
+
+  /* Typography — font families used on .nav-logo (serif) and body (sans) */
+  --font-serif: "mrs-eaves", Georgia, serif;
+  --font-sans: "mr-eaves-xl-sans", Optima, system-ui, sans-serif;
+
+  /* Type scale — reference by name, e.g. font-size: var(--text-title) */
+  --text-display: 4.5rem; /* .hero-headline */
+  --text-title: 2.625rem; /* .section-title, post h1 */
+  --text-subhead: 1.75rem; /* .hero-subhead */
+  --text-xl: 1.375rem; /* .nav-logo */
+  --text-body-lg: 1.125rem;
+  --text-body: 1.0625rem; /* base <p> */
+  --text-small: 0.9375rem;
+  --text-xs: 0.875rem; /* .blog-date, labels */
+  --text-2xs: 0.75rem; /* .card-tag, .blog-tag */
+
+  --leading-display: 1;
+  --leading-tight: 1.15;
+  --leading-body: 1.75;
+
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.12em;
+  --tracking-widest: 0.18em;
+
+  /* Spacing */
+  --spacing-section: 2rem;
+  --spacing-content: 4.5rem; /* horizontal padding on .page-wrapper */
+
+  /* Stripe color stops — controls the red/gold/blue split in .accent-stripe */
+  --stripe-red-stop: 38%;
+  --stripe-gold-stop: 58%;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  p {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-ink-muted);
+  }
+
+  /* <em> renders as blue accent text (not italic) — used in hero headline */
+  em {
+    font-style: normal;
+    color: var(--color-blue);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+
+@layer components {
+  /* Outer content container — rendered by Layout() in layout.ts */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin-inline: auto;
+    padding-inline: var(--spacing-content);
+    padding-block: 2rem;
+  }
+
+  /* Top margin spacer — applied to <main> on every page */
+  .section {
+    margin-block-start: var(--spacing-section);
+  }
+
+  /* Background textures — all fixed/full-screen, rendered in Layout() */
+  .bg-texture-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.32;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .bg-texture-dots {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    background-image: radial-gradient(
+      circle,
+      rgba(17, 16, 9, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
+  .bg-texture-hatch {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: repeating-linear-gradient(
+      55deg,
+      transparent,
+      transparent 22px,
+      rgba(17, 16, 9, 0.025) 22px,
+      rgba(17, 16, 9, 0.025) 23px
+    );
+  }
+
+  /* 5px tricolor bar pinned to the top of every page — rendered in Layout() */
+  .accent-stripe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    z-index: 10;
+    background: linear-gradient(
+      90deg,
+      var(--color-red) 0%,
+      var(--color-red) var(--stripe-red-stop),
+      var(--color-gold) var(--stripe-red-stop),
+      var(--color-gold) var(--stripe-gold-stop),
+      var(--color-blue) var(--stripe-gold-stop)
+    );
+  }
+
+  /* Nav — rendered by Nav() in nav.ts */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Site title / home link */
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: var(--text-subhead);
+    font-style: italic;
+    color: var(--color-blue);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+  }
+
+  .nav-link {
+    color: var(--color-ink-muted);
+    transition: color 150ms ease;
+  }
+  .nav-link:hover {
+    color: var(--color-ink);
+  }
+  /* Active page indicator — set via aria-current="page" in nav.ts */
+  .nav-link[aria-current="page"] {
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-red);
+    padding-bottom: 2px;
+  }
+
+  /* Wraps only the h1 + subhead — band is scoped to this block */
+  .hero-headline-block {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Full-viewport band behind only the headline + subhead */
+  .hero-band {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #f5e9c8;
+    background-image: radial-gradient(
+      circle,
+      rgba(17, 16, 9, 0.15) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+    box-shadow:
+      0 4px 0px rgba(17, 16, 9, 0.18),
+      0 8px 0px rgba(17, 16, 9, 0.1);
+  }
+
+  /* Hero — used on home.ts */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  .eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-red);
+    flex-shrink: 0;
+  }
+
+  .hero-headline {
+    font-family: var(--font-serif);
+    font-size: var(--text-display);
+    font-weight: 700;
+    line-height: var(--leading-display);
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+  }
+
+  /* Wrap text in <em> inside .hero-headline to apply blue accent */
+  .hero-headline .accent {
+    color: var(--color-blue);
+  }
+
+  .hero-subhead {
+    font-family: var(--font-serif);
+    font-size: var(--text-subhead);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-ink-faint);
+    letter-spacing: -0.01em;
+  }
+
+  /* Section header row — title + meta count, used on writing/maps/photos pages */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 0.875rem;
+    border-bottom: 0.5px solid var(--color-border-strong);
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-title);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--color-ink);
+  }
+
+  /* Small label to the right of .section-title (e.g. "3 posts") */
+  .section-meta {
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  /* Horizontal rule with a centered dot — decorative divider */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: "";
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border);
+  }
+
+  .section-divider-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-blue);
+    flex-shrink: 0;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    font-size: var(--text-small);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 150ms ease;
+  }
+  .btn:hover {
+    opacity: 0.85;
+  }
+
+  .btn-primary {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding: 0.9375rem 2.25rem;
+  }
+
+  /* Underline-style button — used for inline CTAs */
+  .btn-ghost {
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-red);
+    padding-bottom: 2px;
+    background: transparent;
+  }
+
+  /* Cards — used on projects.ts */
+  .card {
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border);
+    overflow: hidden;
+    transition:
+      transform 250ms ease,
+      border-color 250ms ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-strong);
+  }
+
+  .card-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+  }
+
+  /* Small uppercase label above a card title */
+  .card-tag {
+    display: block;
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-bottom: 0.625rem;
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin-bottom: 0.625rem;
+  }
+
+  .card-link {
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-red);
+    border-bottom: 1px solid var(--color-red);
+    padding-bottom: 1px;
+  }
+
+  /* Blog list panel (writing.ts) and individual post panel (post.ts) */
+  .blog-panel,
+  .post-panel {
+    background: #fdfaf4;
+    border: 0.5px solid var(--color-border-strong);
+    box-shadow:
+      4px 4px 0px rgba(17, 16, 9, 0.1),
+      8px 8px 0px rgba(17, 16, 9, 0.05);
+    padding: 8px 32px 0;
+    margin-block-start: 0.5rem;
+  }
+
+  /* post-panel overrides the tighter blog-panel padding for long-form content */
+  .post-panel {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  /* Each row in the blog list — date / title / tag grid */
+  .blog-item {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr auto;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding-block: 1.25rem;
+    border-bottom: 0.5px solid var(--color-border);
+    cursor: pointer;
+    transition: padding-left 200ms ease;
+  }
+  .blog-item:last-child {
+    border-bottom: none;
+  }
+  .blog-item:hover {
+    padding-left: 0.5rem;
+  }
+  .blog-item:hover .blog-title {
+    color: var(--color-blue);
+  }
+
+  .blog-date {
+    font-size: var(--text-xs);
+    color: var(--color-ink-faint);
+    letter-spacing: 0.06em;
+  }
+
+  .blog-title {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    transition: color 200ms ease;
+  }
+
+  .blog-tag {
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    white-space: nowrap;
+  }
+
+  /* Markdoc-rendered post content — inside .post-panel on post.ts */
+  .post-body {
+    max-width: 640px;
+  }
+
+  .post-body h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin-block: 2.5rem 1rem;
+  }
+
+  .post-body p {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-body img {
+    width: 100%;
+    margin-block: 2rem;
+    display: block;
+  }
+
+  .post-body pre {
+    background: rgba(17, 16, 9, 0.06);
+    border: 0.5px solid var(--color-border);
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin-block: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .post-body code {
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 0.875em;
+    background: rgba(17, 16, 9, 0.06);
+    padding: 0.1em 0.35em;
+  }
+
+  /* Reset background/padding when <code> is inside a <pre> block */
+  .post-body pre code {
+    background: none;
+    padding: 0;
+  }
+
+  /* {% callout %} tag in Markdoc — renders as a blue left-border aside */
+  .post-callout {
+    border-left: 3px solid var(--color-blue);
+    padding: 1rem 1.25rem;
+    background: rgba(26, 74, 138, 0.06);
+    margin-block: 2rem;
+  }
+
+  .post-callout p {
+    margin: 0;
+  }
+
+  /* ============================================================
+     Mobile — max-width: 640px
+     ============================================================ */
+
+  @media (max-width: 640px) {
+    /* Reduce horizontal page padding */
+    .page-wrapper {
+      padding-inline: 1.25rem;
+    }
+
+    /* Stack nav: logo on top, links below */
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .nav-links {
+      gap: 1.25rem;
+    }
+
+    /* Scale down large display text */
+    .hero-headline {
+      font-size: 2.75rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    /* Simplify blog list rows: date + title only, hide tag */
+    .blog-item {
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+    }
+
+    .blog-tag {
+      display: none;
+    }
+
+    /* Reduce panel padding */
+    .blog-panel {
+      padding-inline: 1rem;
+    }
+
+    .post-panel {
+      padding: 1.25rem 1.25rem 1.75rem;
+    }
+  }
+}
