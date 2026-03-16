@@ -5,7 +5,7 @@ const links = ["projects", "writing"] as const;
 export function Nav(current: string): string {
   return html`
     <nav class="nav">
-      <a href="/" data-link class="nav-logo">Evelyn House</a>
+      <a href="/" data-link class="nav-logo">ehouse.io</a>
       <ul class="nav-links">
         ${links
           .map(

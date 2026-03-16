@@ -195,25 +195,6 @@
   }
 
   /* Hero — used on home.ts */
-  .hero-section {
-    padding-top: 4rem;
-  }
-  .hero-section .eyebrow {
-    margin-bottom: 1.25rem;
-  }
-  .hero-section .hero-headline-block {
-    margin-bottom: 2rem;
-  }
-  .hero-section .hero-body {
-    max-width: 440px;
-    margin-bottom: 3rem;
-  }
-  .hero-section .hero-cta {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
   /* Wraps only the eyebrow + h1 + subhead — band is scoped to this block */
   .hero-headline-block {
     position: relative;
