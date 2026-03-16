@@ -8,8 +8,6 @@
  * Route URLs
  *   /               home
  *   /projects       projects
- *   /maps           maps
- *   /photos         photos
  *   /writing        post list
  *   /writing/:slug  individual post — slug is the .md filename minus the extension
  *
@@ -23,18 +21,14 @@
 type Route =
   | { page: "home" }
   | { page: "projects" }
-  | { page: "maps" }
   | { page: "writing" }
   | { page: "post"; slug: string }
-  | { page: "photos" }
   | { page: "not-found" };
 
 function matchRoute(path: string): Route {
   if (path === "/") return { page: "home" };
   if (path === "/projects") return { page: "projects" };
-  if (path === "/maps") return { page: "maps" };
   if (path === "/writing") return { page: "writing" };
-  if (path === "/photos") return { page: "photos" };
 
   const postMatch = path.match(/^\/writing\/(.+)$/);
   if (postMatch) return { page: "post", slug: postMatch[1] };
@@ -60,11 +54,6 @@ async function navigate(path: string): Promise<void> {
       html = render();
       break;
     }
-    case "maps": {
-      const { render } = await import("./pages/maps");
-      html = render();
-      break;
-    }
     case "writing": {
       const { render } = await import("./pages/writing");
       html = await render();
@@ -73,11 +62,6 @@ async function navigate(path: string): Promise<void> {
     case "post": {
       const { render } = await import("./pages/post");
       html = await render(route.slug);
-      break;
-    }
-    case "photos": {
-      const { render } = await import("./pages/photos");
-      html = render();
       break;
     }
     default: {

@@ -1,6 +1,6 @@
 import { html } from "../html";
 
-const links = ["projects", "maps", "writing", "photos"] as const;
+const links = ["projects", "writing"] as const;
 
 export function Nav(current: string): string {
   return html`
