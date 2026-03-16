@@ -1,1 +1,1 @@
-export const html = String.raw
+export const html = String.raw;

@@ -9,13 +9,17 @@ export function Nav(current: string): string {
       <ul class="nav-links">
         ${links
           .map(
-            (l) => `
-          <li>
-            <a href="/${l}" data-link class="nav-link"
-              ${current === l ? 'aria-current="page"' : ""}
-            >${l}</a>
-          </li>
-        `,
+            (l) => html`
+              <li>
+                <a
+                  href="/${l}"
+                  data-link
+                  class="nav-link"
+                  ${current === l ? 'aria-current="page"' : ""}
+                  >${l}</a
+                >
+              </li>
+            `,
           )
           .join("")}
       </ul>
