@@ -3,8 +3,8 @@ import { Layout } from "../components/layout";
 import { loadPosts } from "../content";
 import { html } from "../html";
 
-export async function render(): Promise<string> {
-  const posts = await loadPosts();
+export function render(): string {
+  const posts = loadPosts();
 
   const items = posts
     .map(
@@ -18,9 +18,7 @@ export async function render(): Promise<string> {
     )
     .join("");
 
-  return Layout(
-    "writing",
-    html`
+  return Layout(html`
       ${Nav("writing")}
       <main class="section">
         <div class="section-header">
@@ -32,3 +30,4 @@ export async function render(): Promise<string> {
     `,
   );
 }
+

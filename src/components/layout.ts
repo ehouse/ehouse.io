@@ -1,7 +1,7 @@
 import { html } from "../html";
 import { Footer } from "./footer";
 
-export function Layout(page: string, content: string): string {
+export function Layout(content: string): string {
   return html`
     <div class="bg-texture-grain" aria-hidden="true"></div>
     <div class="bg-texture-hatch" aria-hidden="true"></div>

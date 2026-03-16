@@ -56,12 +56,12 @@ async function navigate(path: string): Promise<void> {
     }
     case "writing": {
       const { render } = await import("./pages/writing");
-      html = await render();
+      html = render();
       break;
     }
     case "post": {
       const { render } = await import("./pages/post");
-      html = await render(route.slug);
+      html = render(route.slug);
       break;
     }
     default: {

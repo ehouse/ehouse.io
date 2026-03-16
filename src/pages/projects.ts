@@ -3,7 +3,7 @@ import { Layout } from '../components/layout'
 import { html } from '../html'
 
 export function render(): string {
-  return Layout('projects', html`
+  return Layout(html`
     ${Nav('projects')}
     <main class="section">
       <div class="section-header">
