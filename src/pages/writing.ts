@@ -10,7 +10,7 @@ export function render(): string {
     .map(
       (p) => html`
         <a href="/writing/${p.slug}" data-link class="blog-item">
-          <span class="blog-date">${p.date}</span>
+          <span class="meta-text">${p.date}</span>
           <span class="blog-title">${p.title}</span>
           <span class="blog-tag">${p.tag}</span>
         </a>

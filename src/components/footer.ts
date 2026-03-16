@@ -5,14 +5,24 @@ export function Footer(): string {
     <div class="footer-stripe" aria-hidden="true"></div>
     <footer class="footer">
       <span class="footer-copy">&copy; 2026 Evelyn House</span>
-      <a
-        href="https://github.com/ehouse"
-        class="footer-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
+      <nav class="flex gap-6">
+        <a
+          href="http://resume.ehouse.io"
+          class="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Resume
+        </a>
+        <a
+          href="https://github.com/ehouse"
+          class="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </nav>
     </footer>
   `;
 }
