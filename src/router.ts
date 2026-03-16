@@ -1,3 +1,25 @@
+/**
+ * Minimal client-side router over the History API.
+ *
+ * navigate(path)
+ *   Resolves a path to a Route, lazy-imports the matching page module,
+ *   calls render(), and writes the result into #app.
+ *
+ * Route URLs
+ *   /               home
+ *   /projects       projects
+ *   /maps           maps
+ *   /photos         photos
+ *   /writing        post list
+ *   /writing/:slug  individual post — slug is the .md filename minus the extension
+ *
+ * Adding a page: add a variant to Route, a match in matchRoute, a case in
+ * navigate, and a <a data-link> in the nav.
+ *
+ * Links tagged data-link are intercepted by the click listener below;
+ * browser back/forward is handled via popstate.
+ */
+
 type Route =
   | { page: "home" }
   | { page: "projects" }
@@ -67,7 +89,7 @@ async function navigate(path: string): Promise<void> {
   window.scrollTo(0, 0);
 }
 
-// Intercept all data-link clicks
+// Intercept <a data-link> clicks — pushState + navigate instead of full reload
 document.addEventListener("click", (e) => {
   const a = (e.target as Element).closest("a[data-link]");
   if (!a) return;

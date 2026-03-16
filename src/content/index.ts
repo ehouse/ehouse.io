@@ -15,23 +15,8 @@ const rawPosts = import.meta.glob("./posts/*.md", {
   eager: true,
 }) as Record<string, string>;
 
-/**
- * Parses a Markdoc frontmatter string into a key/value map.
- *
- * Expects the raw frontmatter block as extracted by Markdoc (i.e. the content
- * between the `---` delimiters, with the delimiters already stripped). Each
- * line is matched against the pattern `key: value`; lines that don't match
- * (blank lines, comments, complex YAML constructs) are silently ignored.
- *
- * Limitations:
- * - Keys must be a single word (`\w+`); kebab-case or dotted keys are skipped.
- * - Values are treated as plain strings — no type coercion, no quoted-string
- *   handling, and no multi-line / block scalar support.
- * - Duplicate keys: last write wins (standard `Object.fromEntries` behavior).
- *
- * @param raw - The raw frontmatter string from `ast.attributes.frontmatter`.
- * @returns A flat object mapping each parsed key to its trimmed string value.
- */
+// Parses ast.attributes.frontmatter into a flat key/value map.
+// Single-word keys only; values are plain strings (no type coercion).
 function parseFrontmatter(raw: string): Record<string, string> {
   return Object.fromEntries(
     raw

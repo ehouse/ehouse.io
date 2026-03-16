@@ -122,23 +122,9 @@
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.32;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
-    background-size: 200px;
-  }
-
-  .bg-texture-dots {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
     opacity: 0.4;
-    background-image: radial-gradient(
-      circle,
-      rgba(17, 16, 9, 0.1) 1px,
-      transparent 1px
-    );
-    background-size: 24px 24px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: 100px;
   }
 
   .bg-texture-hatch {
@@ -150,8 +136,8 @@
       55deg,
       transparent,
       transparent 22px,
-      rgba(17, 16, 9, 0.025) 22px,
-      rgba(17, 16, 9, 0.025) 23px
+      rgba(17, 16, 9, 0.03) 22px,
+      rgba(17, 16, 9, 0.03) 23px
     );
   }
 

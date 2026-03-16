@@ -4,7 +4,7 @@ import { Layout } from "../components/layout";
 import { html } from "../html";
 
 export async function render(slug: string): Promise<string> {
-  const post = await loadPost(slug);
+  const post = loadPost(slug);
 
   if (!post) {
     return Layout(
