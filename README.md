@@ -7,7 +7,7 @@ Personal portfolio. Vite + TypeScript, with a custom Vite build framework and th
 - **Vite** - bundler / dev server
 - **TypeScript** - plain TS modules
 - **Markdoc** - blog post authoring
-- **Tailwind v4** - utility classes, `@theme` block in `src/style/theme.css`
+- **CSS** - raw custom properties and component classes in `src/style/theme.css`
 
 ## Dev
 
@@ -96,4 +96,4 @@ docker build -t ehouse-io .
 docker run -p 8080:80 ehouse-io
 ```
 
-Multi-stage build: Node 22 compiles the site, nginx alpine serves `dist/`. `nginx.conf` adds the SPA fallback (`try_files → index.html`) required for client-side routing because without it, direct URLs and refreshes on any route other than `/` return 404.
+Multi-stage build: Node 22 compiles the site, nginx alpine serves `dist/`. `nginx.conf` adds the SPA fallback (`try_files -> index.html`) required for client-side routing because without it, direct URLs and refreshes on any route other than `/` return 404.

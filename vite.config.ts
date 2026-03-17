@@ -1,5 +1,4 @@
 import { defineConfig, type Plugin } from "vite";
-import tailwindcss from "@tailwindcss/vite";
 import Markdoc from "@markdoc/markdoc";
 import { markdocConfig } from "./src/content/markdoc-config";
 
@@ -35,7 +34,7 @@ function markdocPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [tailwindcss(), markdocPlugin()],
+  plugins: [markdocPlugin()],
   appType: "spa",
   build: {
     target: "es2020",

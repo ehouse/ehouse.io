@@ -5,7 +5,7 @@ export function Footer(): string {
     <div class="footer-stripe" aria-hidden="true"></div>
     <footer class="footer">
       <span class="footer-copy">&copy; 2026 Evelyn House</span>
-      <nav class="flex gap-6">
+      <nav class="footer-nav">
         <a
           href="http://resume.ehouse.io"
           class="footer-link"

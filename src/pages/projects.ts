@@ -14,7 +14,7 @@ export interface ProjectMeta {
 
 // Eagerly import all project page modules and collect their meta exports.
 const projectModules = import.meta.glob<{ meta: ProjectMeta }>(
-  './projects/*.ts',
+  '../content/projects/*.ts',
   { eager: true },
 );
 

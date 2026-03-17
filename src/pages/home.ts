@@ -5,9 +5,9 @@ import { html } from "../html";
 export function render(): string {
   return Layout(html`
     ${Nav("home")}
-    <main class="pt-12">
-      <div class="hero-headline-block mb-8">
-        <div class="eyebrow mb-5">
+    <main class="hero-main">
+      <div class="hero-headline-block">
+        <div class="eyebrow">
           <div class="eyebrow-dot"></div>
           Software · Photographer · GM
         </div>
@@ -26,7 +26,9 @@ export function render(): string {
         </p>
         <div class="hero-cta">
           <a href="/projects" data-link class="btn btn-primary">See my work</a>
-          <a href="/writing" data-link class="btn btn-ghost">Read the blog →</a>
+          <a href="/writing" data-link class="btn btn-ghost"
+            >Read the blog -></a
+          >
         </div>
       </div>
     </main>

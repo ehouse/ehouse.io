@@ -5,11 +5,12 @@ import { ProjectHeader } from "../../components/project-header";
 import { html } from "../../html";
 
 export const meta: ProjectMeta = {
-  slug: "sample-two",
-  title: "Another Project",
-  tag: "Rust",
-  description: "A second placeholder to test the two-column grid layout.",
-  photo: "https://picsum.photos/seed/sample-two/800/450",
+  slug: "sample-three",
+  title: "Third Thing",
+  tag: "Hardware",
+  description:
+    "A third placeholder - no photo, to test the no-image branch alongside the others.",
+  photo: "",
 };
 
 export function render(): string {
@@ -19,7 +20,12 @@ export function render(): string {
       <div class="post-panel">
         ${ProjectHeader(meta)}
         <p>Project content goes here.</p>
-        <a href="/projects" data-link class="btn btn-ghost" style="margin-top: 2rem;">
+        <a
+          href="/projects"
+          data-link
+          class="btn btn-ghost"
+          style="margin-top: 2rem;"
+        >
           ← Back to projects
         </a>
       </div>
