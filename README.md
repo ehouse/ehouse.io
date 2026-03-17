@@ -30,7 +30,7 @@ tag: Category
 Body content.
 ```
 
-### Markdoc tags
+### Custom Markdoc tags
 
 | Tag                                    | Usage                           |
 | -------------------------------------- | ------------------------------- |
@@ -97,25 +97,3 @@ docker run -p 8080:80 ehouse-io
 ```
 
 Multi-stage build: Node 22 compiles the site, nginx alpine serves `dist/`. `nginx.conf` adds the SPA fallback (`try_files → index.html`) required for client-side routing because without it, direct URLs and refreshes on any route other than `/` return 404.
-
-## Structure
-
-```
-src/
-  components/         nav, footer, layout, project-header
-  content/
-    posts/            .md blog posts
-    index.ts          loadPosts() / loadPost()
-    markdoc-config.ts
-  pages/
-    projects/         one .ts file per project
-    home.ts
-    post.ts
-    projects.ts
-    writing.ts
-  style/
-    theme.css
-  router.ts
-  html.ts
-  main.ts
-```
