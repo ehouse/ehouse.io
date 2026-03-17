@@ -5,7 +5,7 @@ import { html } from "../html";
 export function render(): string {
   return Layout(html`
     ${Nav("home")}
-    <main class="pt-8">
+    <main class="pt-12">
       <div class="hero-headline-block mb-8">
         <div class="eyebrow mb-5">
           <div class="eyebrow-dot"></div>

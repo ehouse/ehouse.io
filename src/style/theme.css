@@ -13,6 +13,7 @@
   --color-ink-faint: #6b6355;
   --color-red: #c42b1a;
   --color-blue: #1a4a8a;
+  --color-accent: #8ecae6;
   --color-gold: #b07d10;
   --color-surface: rgba(17, 16, 9, 0.06);
   --color-border: rgba(17, 16, 9, 0.15);
@@ -165,10 +166,41 @@
 
   /* Site title / home link */
   .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-brace {
     font-family: var(--font-serif);
-    font-size: var(--text-title);
+    font-size: 2.75rem;
+    line-height: 0;
+    font-style: normal;
+    color: color-mix(in srgb, var(--color-blue) 55%, transparent);
+    user-select: none;
+  }
+
+  .nav-logo-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    transform: translateY(-0.2em);
+  }
+
+  .nav-logo-domain {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
     font-style: italic;
-    color: var(--color-blue);
+    color: var(--color-ink-muted);
+  }
+
+  .nav-logo-name {
+    font-family: var(--font-serif);
+    font-size: var(--text-sm);
+    font-style: normal;
+    letter-spacing: 0.14em;
+    color: var(--color-ink);
   }
 
   .nav-links {
@@ -254,7 +286,7 @@
   }
 
   .hero-headline .accent {
-    color: #8ecae6;
+    color: var(--color-accent);
   }
 
   .hero-subhead {
@@ -642,8 +674,16 @@
     }
 
     /* Reduce nav logo size on small screens */
-    .nav-logo {
-      font-size: var(--text-subhead);
+    .nav-logo-brace {
+      font-size: var(--text-3xl);
+    }
+
+    .nav-logo-domain {
+      font-size: var(--text-xl);
+    }
+
+    .nav-logo-name {
+      font-size: var(--text-xs);
     }
 
     /* Reduce hero top padding */
