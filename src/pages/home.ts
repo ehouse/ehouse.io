@@ -17,14 +17,17 @@ export function render(): string {
         </h1>
         <p class="hero-subhead">(plus some mild chaos)</p>
       </div>
-      <p class="hero-body max-w-110 mb-12">
-        I work across infrastructure and software engineering professionally,
-        and spend the rest of my time shooting film, including alternative
-        process work.
-      </p>
-      <div class="flex items-center gap-8">
-        <a href="/projects" data-link class="btn btn-primary">See my work</a>
-        <a href="/writing" data-link class="btn btn-ghost">Read the blog →</a>
+      <div class="hero-body-row">
+        <p class="hero-body">
+          I work across infrastructure and software engineering professionally,
+          and spend the rest of my time shooting film, including alternative
+          process work like Wet Plate Collodion and Cyanotype. Most of the
+          software I write outside of work is for my Pathfinder Campaigns.
+        </p>
+        <div class="hero-cta">
+          <a href="/projects" data-link class="btn btn-primary">See my work</a>
+          <a href="/writing" data-link class="btn btn-ghost">Read the blog →</a>
+        </div>
       </div>
     </main>
   `);

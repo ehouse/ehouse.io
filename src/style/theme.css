@@ -298,6 +298,42 @@
     letter-spacing: -0.01em;
   }
 
+  /* Body + CTA row below the hero headline block (home.ts) */
+  .hero-body-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-body {
+    flex: 1;
+    text-align: center;
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 900px) {
+    .hero-body-row {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .hero-body {
+      text-align: left;
+    }
+
+    .hero-cta {
+      align-self: flex-end;
+    }
+  }
+
   /* Section header row — title + meta count, used on writing/projects pages */
   .section-header {
     display: flex;
@@ -662,13 +698,6 @@
       padding-inline: 1.25rem;
     }
 
-    /* Stack nav: logo on top, links below */
-    .nav {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
     .nav-links {
       gap: 1.25rem;
     }
@@ -686,16 +715,9 @@
       font-size: var(--text-xs);
     }
 
-    /* Reduce hero top padding */
-    .hero-section {
-      padding-top: 2rem;
-    }
-
-    /* Stack CTA buttons vertically */
-    .hero-section .hero-cta {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
+    /* Stack CTA buttons vertically on small screens */
+    .hero-cta {
+      flex-direction: row;
     }
 
     /* Scale down large display text */
