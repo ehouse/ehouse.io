@@ -7,10 +7,6 @@ import { markdocConfig } from "./src/content/markdoc-config";
 // Each .md import resolves to:
 //   export default { title, date, tag, body }
 // where `body` is fully-rendered HTML. Markdoc never ships to the browser.
-//
-// The transform hook runs once per file per cold start in dev (Vite caches
-// after that), and once per file during `vite build`. HMR works automatically
-// editing a .md file triggers a re-transform and pushes the update.
 function markdocPlugin(): Plugin {
   return {
     name: "markdoc",
