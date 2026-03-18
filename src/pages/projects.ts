@@ -1,6 +1,6 @@
-import { Nav } from '../components/nav';
-import { Layout } from '../components/layout';
-import { html } from '../html';
+import { Nav } from "../components/nav";
+import { Layout } from "../components/layout";
+import { html } from "../html";
 
 // Shape that each project page must export as `meta`.
 // Import this type in your project page for type-checking.
@@ -14,7 +14,7 @@ export interface ProjectMeta {
 
 // Eagerly import all project page modules and collect their meta exports.
 const projectModules = import.meta.glob<{ meta: ProjectMeta }>(
-  '../content/projects/*.ts',
+  "../content/projects/*.ts",
   { eager: true },
 );
 
@@ -27,7 +27,9 @@ export function render(): string {
     .map(
       (p) => html`
         <a href="/projects/${p.slug}" data-link class="card">
-          ${p.photo ? html`<img src="${p.photo}" alt="${p.title}" class="card-photo" />` : ''}
+          ${p.photo
+            ? html`<img src="${p.photo}" alt="${p.title}" class="card-photo" />`
+            : ""}
           <div class="card-body">
             <span class="card-tag">${p.tag}</span>
             <h3 class="card-title">${p.title}</h3>
@@ -36,10 +38,10 @@ export function render(): string {
         </a>
       `,
     )
-    .join('');
+    .join("");
 
   return Layout(html`
-    ${Nav('projects')}
+    ${Nav("projects")}
     <main class="section">
       <div class="section-header">
         <h2 class="section-title">Projects</h2>

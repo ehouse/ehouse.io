@@ -6,7 +6,7 @@ export type ProjectModule = {
 const projectModules = import.meta.glob<ProjectModule>("./projects/*.ts");
 
 export function loadProject(
-  slug: string
+  slug: string,
 ): (() => Promise<ProjectModule>) | undefined {
   return projectModules[`./projects/${slug}.ts`];
 }

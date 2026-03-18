@@ -19,15 +19,13 @@ export function render(): string {
     .join("");
 
   return Layout(html`
-      ${Nav("writing")}
-      <main class="section">
-        <div class="section-header">
-          <h2 class="section-title">Writing</h2>
-          <span class="section-meta">${posts.length} posts</span>
-        </div>
-        <div class="blog-panel">${items}</div>
-      </main>
-    `,
-  );
+    ${Nav("writing")}
+    <main class="section">
+      <div class="section-header">
+        <h2 class="section-title">Writing</h2>
+        <span class="section-meta">${posts.length} posts</span>
+      </div>
+      <div class="blog-panel">${items}</div>
+    </main>
+  `);
 }
-
