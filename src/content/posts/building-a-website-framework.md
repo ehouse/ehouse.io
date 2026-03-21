@@ -8,7 +8,7 @@ I wanted a new personal site. I also wanted to find out how far plain Vite and T
 
 ## The render model
 
-Initially I had reached for React or Svelte, but decided to wholely commit. There is no virtual DOM. Every page is a TypeScript module that exports a `render()` function returning an HTML string. The entire templating system is one line:
+Initially I had reached for React or Svelte, but decided to wholly commit. There is no virtual DOM (though each page can host a Shadow DOM, so you could technically mount a React app inside one if you miss it enough). Every page is a TypeScript module that exports a `render()` function returning an HTML string. The entire templating system is one line:
 
 ```ts
 export const html = String.raw;
@@ -16,7 +16,7 @@ export const html = String.raw;
 
 `String.raw` is a tagged template literal that suppresses escape sequence processing. It does nothing else at runtime and its only practical effect is that editors and syntax highlighters recognize the `html` tag and highlight the template content as HTML.
 
-Pages are compose by calling component functions and interpolating the results:
+Pages are composed by calling component functions and interpolating the results:
 
 ```ts
 export function render(): string {
@@ -27,11 +27,11 @@ export function render(): string {
 }
 ```
 
-Components are functions that take arguments and return html strings. I wanted to emulate the TSX/React paradym as closely as I could as it is what I'm most used too.
+Components are functions that take arguments and return HTML strings. I wanted to emulate the TSX/React paradigm as closely as I could, as it is what I'm most used to.
 
 ## The router
 
-Page navigation is where I expected I would need to pull in my first 3rd party library for the project, and the plan was to use Tanstack Router. But decided to stick to minimal 3rd party libraries.
+Page navigation is where I expected I would need to pull in my first third-party library, and the plan was to use TanStack Router. I decided to stick with minimal dependencies instead.
 
 Navigation is handled by a ~60-line client-side router built directly on the History API. Clicking any `<a data-link>` element triggers an event listener on `document`, which calls `history.pushState` and invokes `navigate()`. The `popstate` event handles the browser back/forward buttons.
 
@@ -59,7 +59,7 @@ const projectModules = import.meta.glob("../content/projects/*.ts", {
 
 ## The Markdoc Vite plugin
 
-In comes the very first 3rd party library, blog posts are authored in Markdown using Markdoc. Rather than shipping a Markdown parser to the browser, a custom Vite plugin compiles every `.md` file into a plain JavaScript module at build time.
+This is where the first third-party library enters: blog posts are authored in Markdown using Markdoc. Rather than shipping a Markdown parser to the browser, a custom Vite plugin compiles every `.md` file into a plain JavaScript module at build time.
 
 The plugin implements Vite's `transform` hook, which intercepts file imports by extension:
 
