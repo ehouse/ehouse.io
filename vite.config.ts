@@ -1,4 +1,5 @@
 import { defineConfig, type Plugin } from "vite";
+import react from "@vitejs/plugin-react";
 import Markdoc from "@markdoc/markdoc";
 import { markdocConfig } from "./src/content/markdoc-config";
 
@@ -30,7 +31,7 @@ function markdocPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [markdocPlugin()],
+  plugins: [react(), markdocPlugin()],
   appType: "spa",
   build: {
     target: "es2020",

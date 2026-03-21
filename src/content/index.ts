@@ -3,12 +3,15 @@ export type ProjectModule = {
   mount?: (s: ShadowRoot) => () => void;
 };
 
-const projectModules = import.meta.glob<ProjectModule>("./projects/*.ts");
+const projectModules = import.meta.glob<ProjectModule>("./projects/*.{ts,tsx}");
 
 export function loadProject(
   slug: string,
 ): (() => Promise<ProjectModule>) | undefined {
-  return projectModules[`./projects/${slug}.ts`];
+  return (
+    projectModules[`./projects/${slug}.tsx`] ??
+    projectModules[`./projects/${slug}.ts`]
+  );
 }
 
 export interface Post {

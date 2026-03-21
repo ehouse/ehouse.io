@@ -56,6 +56,7 @@ async function navigate(path: string): Promise<void> {
   const route = matchRoute(path);
 
   let html: string;
+  let mountFn: ((shadow: ShadowRoot) => () => void) | undefined;
 
   switch (route.page) {
     case "home": {
@@ -76,11 +77,7 @@ async function navigate(path: string): Promise<void> {
       }
       const mod = await loader();
       html = mod.render();
-      if (mod.mount) {
-        const host = document.getElementById("mount")!;
-        const shadow = host.attachShadow({ mode: "open" });
-        currentUnmount = mod.mount(shadow);
-      }
+      mountFn = mod.mount;
       break;
     }
     case "writing": {
@@ -99,6 +96,13 @@ async function navigate(path: string): Promise<void> {
   }
 
   app.innerHTML = html;
+
+  if (mountFn) {
+    const host = document.getElementById("mount")!;
+    const shadow = host.attachShadow({ mode: "open" });
+    currentUnmount = mountFn(shadow);
+  }
+
   window.scrollTo(0, 0);
 }
 
