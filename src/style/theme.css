@@ -254,7 +254,6 @@ a {
   position: relative;
   isolation: isolate;
   padding: 2rem 0 2rem 0;
-  margin-bottom: 2rem;
 }
 
 /* Full-viewport band behind only the headline block */
@@ -328,7 +327,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  padding-top: 2rem;
 }
 
 .hero-body {
