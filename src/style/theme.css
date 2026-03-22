@@ -759,6 +759,10 @@ a {
     padding-inline: 1.25rem;
   }
 
+  .footer {
+    padding-inline: 1.25rem;
+  }
+
   .nav-links {
     gap: 1.25rem;
   }
