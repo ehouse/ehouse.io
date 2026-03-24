@@ -1,9 +1,22 @@
+import type { ProjectMeta } from "../pages/projects";
+
 export type ProjectModule = {
   render: () => string;
   mount?: (s: ShadowRoot) => () => void;
 };
 
 const projectModules = import.meta.glob<ProjectModule>("./projects/*.{ts,tsx}");
+
+const eagerProjectModules = import.meta.glob<{ meta: ProjectMeta }>(
+  "./projects/*.{ts,tsx}",
+  { eager: true },
+);
+
+export function loadProjects(): ProjectMeta[] {
+  return Object.values(eagerProjectModules)
+    .map((mod) => mod.meta)
+    .filter(Boolean);
+}
 
 export function loadProject(
   slug: string,
