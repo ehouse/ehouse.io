@@ -30,7 +30,7 @@ export function ProjectHeader(meta: ProjectMeta): string {
         <h1 class="section-title" style="margin-bottom: 0.5rem;">
           ${meta.title}
         </h1>
-        <p class="meta-text" style="margin-bottom: 2rem;">
+        <p class="meta-text" style="margin-bottom: 1.5rem;">
           ${meta.description}
         </p>
       </div>

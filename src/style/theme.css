@@ -43,16 +43,16 @@ video {
   --text-display: 4.5rem; /* .hero-headline */
   --text-title: 2.625rem; /* .section-title, post h1 */
   --text-subhead: 1.75rem; /* .hero-subhead */
-  --text-body: 1rem; /* base <p> */
+  --text-body: 1.0625rem; /* base <p> */
   --text-3xl: 1.875rem;
   --text-xl: 1.25rem;
   --text-base: 1rem;
-  --text-sm: 0.875rem;
+  --text-sm: 0.9375rem;
   --text-xs: 0.75rem;
 
   --leading-display: 1;
   --leading-tight: 1.15;
-  --leading-body: 1.75;
+  --leading-body: 1.6;
 
   --tracking-wide: 0.08em;
   --tracking-wider: 0.12em;
@@ -91,7 +91,7 @@ video {
    ============================================================ */
 
 html {
-  font-size: 17px;
+  font-size: 16px;
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
@@ -679,7 +679,7 @@ a {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-ink);
-  margin-block: 2.5rem 1rem;
+  margin-block: 2rem 1rem;
 }
 
 .post-body p {
@@ -694,12 +694,20 @@ a {
 
 .post-body pre {
   background: rgba(17, 16, 9, 0.06);
-  border: 0.5px solid var(--color-border);
   padding: 1.25rem 1.5rem;
   overflow-x: auto;
   margin-block: 2rem;
   font-size: 0.875rem;
   line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Prism theme sets font-size on pre[class*="language-"] at the same specificity
+   as .post-body pre, and wins by source order. The extra class here raises
+   specificity so our value takes precedence. */
+.post-body pre[class*="language-"] {
+  font-size: 0.875rem;
+  margin-block: 1em;
 }
 
 .post-body code {

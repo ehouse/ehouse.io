@@ -33,7 +33,7 @@ export function render(slug: string): string {
         <h1 class="section-title" style="margin-bottom: 0.5rem;">
           ${post.title}
         </h1>
-        <p class="meta-text" style="margin-bottom: 2rem;">${post.date}</p>
+        <p class="meta-text" style="margin-bottom: 1.5rem;">${post.date}</p>
         <div class="post-body">${post.body}</div>
       </div>
     </main>

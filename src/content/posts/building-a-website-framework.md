@@ -31,7 +31,7 @@ Components are functions that take arguments and return HTML strings. I wanted t
 
 ## The router
 
-Page navigation is where I expected I would need to pull in my first third-party library, and the plan was to use TanStack Router. I decided to stick with minimal dependencies instead.
+Page navigation is where I expected I would need to pull in my first third-party library, and the plan was to use TanStack Router (And React). After getting lucky and finding some examples on Stack Overflow, I decided to stick with minimal dependencies instead.
 
 Navigation is handled by a ~60-line client-side router built directly on the History API. Clicking any `<a data-link>` element triggers an event listener on `document`, which calls `history.pushState` and invokes `navigate()`. The `popstate` event handles the browser back/forward buttons.
 
