@@ -4,6 +4,9 @@ import Markdoc from "@markdoc/markdoc";
 import { markdocConfig } from "./src/content/markdoc-config";
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-ini";
+import "prismjs/components/prism-perl";
 
 function highlightCodeBlocks(html: string): string {
   return html.replace(
@@ -18,7 +21,17 @@ function highlightCodeBlocks(html: string): string {
         .replace(/&quot;/g, '"')
         .replace(/&#39;/g, "'");
       const highlighted = Prism.highlight(code, grammar, lang);
-      return `<pre class="language-${lang}"><code class="language-${lang}">${highlighted}</code></pre>`;
+      const body =
+        lang === "bash"
+          ? // Inject a `bash-line` class to render a $ ::before
+            highlighted
+              .split("\n")
+              .map((line) =>
+                line ? `<span class="bash-line">${line}</span>` : line,
+              )
+              .join("\n")
+          : highlighted;
+      return `<pre class="language-${lang}"><code class="language-${lang}">${body}</code></pre>`;
     },
   );
 }
@@ -45,7 +58,7 @@ function markdocPlugin(): Plugin {
       const body = highlightCodeBlocks(
         Markdoc.renderers.html(Markdoc.transform(ast, markdocConfig)),
       );
-      return `export default ${JSON.stringify({ title: meta.title ?? "", date: meta.date ?? "", tag: meta.tag ?? "", body })}`;
+      return `export default ${JSON.stringify({ title: meta.title ?? "", date: meta.date ?? "", updated: meta.updated ?? "", tag: meta.tag ?? "", body })}`;
     },
   };
 }

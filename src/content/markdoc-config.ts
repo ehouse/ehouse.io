@@ -22,11 +22,14 @@ export const markdocConfig: Config = {
   tags: {
     callout: {
       render: "div",
-      attributes: {},
+      attributes: {
+        type: { type: String, default: "info" },
+      },
       transform(node, config) {
+        const type = node.attributes.type ?? "info";
         return new Markdoc.Tag(
           "div",
-          { class: "post-callout" },
+          { class: `post-callout post-callout-${type}` },
           node.transformChildren(config),
         );
       },

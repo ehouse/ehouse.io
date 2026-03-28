@@ -27,13 +27,17 @@ export function render(slug: string): string {
     ${Nav("writing")}
     <main class="section">
       <div class="post-panel">
-        <div style="margin-bottom: 1rem;">
-          <span class="card-tag">${post.tag}</span>
+        <div class="post-hero">
+          <div style="margin-bottom: 1rem;">
+            <span class="card-tag">${post.tag}</span>
+          </div>
+          <h1 class="section-title" style="margin-bottom: 0.5rem;">
+            ${post.title}
+          </h1>
+          <p class="meta-text" style="margin-bottom: 0;">
+            ${post.updated ? `Posted: ${post.date}<br>Updated: ${post.updated}` : post.date}
+          </p>
         </div>
-        <h1 class="section-title" style="margin-bottom: 0.5rem;">
-          ${post.title}
-        </h1>
-        <p class="meta-text" style="margin-bottom: 1.5rem;">${post.date}</p>
         <div class="post-body">${post.body}</div>
       </div>
     </main>

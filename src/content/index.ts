@@ -31,6 +31,7 @@ export interface Post {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   tag: string;
   body: string;
 }
