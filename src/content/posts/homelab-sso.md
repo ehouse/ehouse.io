@@ -1,5 +1,5 @@
 ---
-title: Passkey SSO for Self-Hosted Services with Pocket ID
+title: Lightweight Self-Hosted OIDC with Pocket ID
 date: 2026-04-03
 tag: Homelab
 ---
@@ -44,7 +44,7 @@ networks:
 
 The `stack.env` file contains:
 
-```
+```ini
 APP_URL=https://auth.ehouse.io
 TRUST_PROXY=true
 ENCRYPTION_KEY=your-key-here

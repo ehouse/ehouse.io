@@ -7,6 +7,7 @@ import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-bash";
 import "prismjs/components/prism-ini";
 import "prismjs/components/prism-perl";
+import "prismjs/components/prism-yaml";
 
 function highlightCodeBlocks(html: string): string {
   return html.replace(
