@@ -35,7 +35,7 @@ A few things worth noting before reading the config below:
 - The `stop` command halts processing after a match. Without it, multiple rules can apply to the same message, which is sometimes intentional but usually not.
 - The `addflag` action sets IMAP flags on a message. The `label3` flag used below is a Gmail-style label and is not portable across all clients.
 
-```sieve
+```ini
 require ["fileinto", "imap4flags"];
 
 # Route messages flagged as spam by SpamAssassin.
